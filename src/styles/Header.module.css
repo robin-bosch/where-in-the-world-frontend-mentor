@@ -1,0 +1,19 @@
+.header {
+    width:100%;
+    padding:1rem 5vw;
+    height:5rem;
+
+    display:flex;
+    justify-content: space-between;
+
+    color: var(--text);
+    background: var(--elements);
+}
+
+.heading {
+
+}
+
+.modeContainer {
+
+}
