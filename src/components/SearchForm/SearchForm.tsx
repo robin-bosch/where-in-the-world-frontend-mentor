@@ -2,11 +2,10 @@
 import styles from "./SearchForm.module.css"
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useEffect, useState } from 'react';
-import getSearchResult from "@/lib/getSearchResult";
 import useSWR from "swr";
 
 
-const fetcher = url => fetch(url).then(r => r.json())
+const fetcher = (url: any) => fetch(url).then(r => r.json())
 
 export default function SearchForm({data, setCurrentCountryList}: any) {
   const [searchValue, setSearchValue] = useState<string>("");
