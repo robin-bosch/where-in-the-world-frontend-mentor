@@ -1,7 +1,0 @@
-.countriesContainer {
-	width:clamp(10rem, 90vw, 93rem);
-	display: grid;
-	grid-template-columns: repeat(4, 16rem);
-    /* grid-auto-rows: 1fr; */
-	gap:5rem;
-}

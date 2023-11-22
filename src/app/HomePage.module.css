@@ -1,0 +1,33 @@
+.main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+	min-height: 100%;
+	background: var(--background);
+}
+
+
+
+
+
+.controls {
+	display:flex;
+	flex-wrap: wrap;
+	gap:3rem;
+	padding: 3rem 0rem;
+	justify-content: space-between;
+	width:clamp(10rem, 90vw, 93rem);
+}
+
+
+
+.sortBy {
+	gap:1rem;
+	padding:1rem 1.25rem;
+	border:none;
+	border-radius:5px;
+	color: var(--text);
+
+	background: var(--elements);
+}

@@ -1,0 +1,27 @@
+.countriesContainer {
+	width:clamp(10rem, 90vw, 93rem);
+	display: grid;
+	grid-template-columns: repeat(1, 16rem);
+	justify-content: center;
+    /* grid-auto-rows: 1fr; */
+	gap:5rem;
+}
+
+
+@media (min-width: 768px) { 
+	.countriesContainer {
+		grid-template-columns: repeat(2, 16rem);
+	}
+}
+
+@media (min-width: 1024px) { 
+	.countriesContainer {
+		grid-template-columns: repeat(3, 16rem);
+	}
+}
+
+@media (min-width: 1280px) { 
+	.countriesContainer {
+		grid-template-columns: repeat(4, 16rem);
+	}
+}

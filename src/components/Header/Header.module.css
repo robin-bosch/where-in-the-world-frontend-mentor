@@ -4,16 +4,23 @@
     height:5rem;
 
     display:flex;
+    align-items: center;
     justify-content: space-between;
 
     color: var(--text);
     background: var(--elements);
 }
 
-.heading {
+/* .icon {
 
+} */
+
+.heading {
+    font-size:clamp(1rem, 5vw, 2rem);
 }
 
 .modeContainer {
-
+    display: flex;
+    gap:1rem;
+    align-items: center;
 }

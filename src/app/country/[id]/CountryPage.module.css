@@ -50,6 +50,7 @@
 
 .infoContainer {
     display:flex;
+    flex-direction: column;
 }
 
 .infoColumn {
@@ -59,5 +60,20 @@
 }
 
 .borderCountriesContainer {
+    display: flex;
+    gap:1rem;
+    flex-wrap: wrap;
+}
 
+.borderCountry {
+    padding:0.5rem 1.25rem;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:1rem;
+
+    color:var(--text);
+
+    background: var(--elements);
 }

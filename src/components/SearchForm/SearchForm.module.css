@@ -12,7 +12,7 @@
 }
 
 .searchInput {
-	width:20rem;
+	width:min(90vw, 20rem);
 	padding:1rem 1rem 1rem 4.5rem;
 	border-radius:5px;
 

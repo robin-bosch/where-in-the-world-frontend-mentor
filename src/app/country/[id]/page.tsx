@@ -1,7 +1,14 @@
 import Link from "next/link";
 
-import styles from "@/styles/CountryPage.module.css"
+import styles from "./CountryPage.module.css"
 import { BsArrowLeft } from 'react-icons/bs';
+
+import getAllCountries from "@/lib/getAllCountries";
+
+
+function toUrlConverter(name: string): string {
+    return name.toLowerCase().replaceAll(" ", "-");
+}
 
 export default async function CountryPage({ params }: { params: { id: string } }) {
     const country = await getData(params.id);
@@ -24,7 +31,6 @@ export default async function CountryPage({ params }: { params: { id: string } }
         return list;
     };
 
-    console.log(country[0].languages)
 
     return (
         <main className={styles.main}>
@@ -33,25 +39,27 @@ export default async function CountryPage({ params }: { params: { id: string } }
                 <span>Back</span>
             </Link>
             <section className={styles.content}>
-                <img src={country[0].flags.svg} alt="" className={styles.flag}/>
+                <img src={country.flags.svg} alt="" className={styles.flag}/>
                 <div className={styles.contentText}>
-                    <h1>{country[0].name.common}</h1>
+                    <h1>{country.name.common}</h1>
                     <div className={styles.infoContainer}>
                         <div className={styles.infoColumn}>
-                            <p>Native Name: {findFirstProperty(country[0].name.nativeName).official}</p>
-                            <p>Population: {country[0].population}</p>
-                            <p>Region: {country[0].region}</p>
-                            <p>Sub Region: {country[0].population}</p>
-                            <p>Capital: {country[0].capital}</p>
+                            <p><b>Native Name:</b> {findFirstProperty(country.name.nativeName).official}</p>
+                            <p>Population: {country.population}</p>
+                            <p>Region: {country.region}</p>
+                            <p>Sub Region: {country.subregion}</p>
+                            <p>Capital: {country.capital}</p>
                         </div>
                         <div className={styles.infoColumn}>
-                            <p>Top Level Domain: {country[0].tld}</p>
-                            <p>Currencies: {findFirstProperty(country[0].currencies).name}</p>
-                            <p>Languages: {getPropertyList(country[0].languages)}</p>
+                            <p>Top Level Domain: {country.tld}</p>
+                            <p>Currencies: {findFirstProperty(country.currencies).name}</p>
+                            <p>Languages: {getPropertyList(country.languages)}</p>
                         </div>
                     </div>
                     <div className={styles.borderCountriesContainer}>
-
+                        {country.borders.map((border: any) => {
+                            return <p key={border} className={styles.borderCountry}>{border}</p>
+                        })}
                     </div>
                 </div>
             </section>
@@ -65,13 +73,27 @@ export default async function CountryPage({ params }: { params: { id: string } }
 
 
 async function getData(id: string) {
-    console.log(`https://restcountries.com/v3.1/name/${id}`);
-    const res = await fetch(`https://restcountries.com/v3.1/name/${id}`)
+    const countryList = getAllCountries();
 
-    const json = res.json();
-    const obj = json[0];
-    console.log(obj);
+    let countryReturn = null;
 
-	return json;
+    for(let i = 0; i < countryList.length; i++) {
+        if(toUrlConverter(countryList[i].name.common) == id) {
+            countryReturn = countryList[i];
+            break;
+        }
+    }
+
+    for(let borderIndex = 0; borderIndex < countryReturn.borders.length; borderIndex++) {
+        for(let countryIndex = 0; countryIndex < countryList.length; countryIndex++) {
+            if(countryReturn.borders[borderIndex] == countryList[countryIndex].cca3) {
+                countryReturn.borders[borderIndex] = countryList[countryIndex].name.common;
+                break;
+            }
+        }
+    }
+
+
+    return countryReturn;
 
 }

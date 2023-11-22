@@ -1,10 +1,15 @@
 "use client"
-import styles from "@/styles/SearchForm.module.css"
+import styles from "./SearchForm.module.css"
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useEffect, useState } from 'react';
+import getSearchResult from "@/lib/getSearchResult";
+import useSWR from "swr";
 
-export default function SearchForm({data}: any) {
-    const [searchValue, setSearchValue] = useState<string>("");
+
+const fetcher = url => fetch(url).then(r => r.json())
+
+export default function SearchForm({data, setCurrentCountryList}: any) {
+  const [searchValue, setSearchValue] = useState<string>("");
 
 
       useEffect(() => {
@@ -16,7 +21,9 @@ export default function SearchForm({data}: any) {
 
 	function search() {
     if(searchValue != "") {
-      alert("Searching now")
+      fetch(`/api/queryCountries?query=${searchValue}`).then((res) => res.json()).then((data) => {
+        setCurrentCountryList(data);
+      })
     }
 		
 	}
