@@ -9,23 +9,27 @@ export enum Themes {
 
 interface ThemeInterface<T = any> {
     theme: Themes,
-    setTheme: (theme: Themes) => void;
+    switchTheme: () => void;
 }
 
-const themeContext = createContext<ThemeInterface>({theme: Themes.Dark, setTheme: () => {}})
+const themeContext = createContext<ThemeInterface>({theme: Themes.Dark, switchTheme: () => {}})
 
 export function ThemeProvider({children}: any): JSX.Element {
-    const [theme, setTheme] = useState<Themes>(getSavedTheme());
+    const [theme, setTheme] = useState<Themes>(Themes.Dark);
 
 
-    useEffect(() => {
-        setSavedTheme(theme);
-        console.log(theme)
-    }, [theme])
+    // useEffect(() => {
+    //     setSavedTheme(theme);
+    // }, [theme])
+
+    function switchTheme() {
+        setTheme(theme == Themes.Dark ? Themes.Light : Themes.Dark)
+        setSavedTheme(theme == Themes.Dark ? Themes.Light : Themes.Dark)
+    }
 
     useEffect(() => {
         setTheme(getSavedTheme());
-    })
+    }, [])
 
     /**
      * Returns the saved theme.
@@ -60,7 +64,7 @@ function setSavedTheme(theme: Themes) {
 
     const themeValueContext: ThemeInterface = {
         theme,
-        setTheme,
+        switchTheme,
     }
 
 

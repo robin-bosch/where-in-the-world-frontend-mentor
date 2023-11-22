@@ -4,8 +4,6 @@ import styles from './HomePage.module.css'
 import SearchForm from '@/components/SearchForm/SearchForm';
 import CardDisplay from '@/components/CardDisplay/CardDisplay';
 
-
-import getAllCountries from '@/lib/getAllCountries';
 import useSWR from 'swr';
 import { useEffect, useState } from 'react';
 

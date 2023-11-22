@@ -6,15 +6,13 @@ import { IoMdMoon } from "react-icons/io";
 
 
 export default function Header() {
-    const {theme, setTheme} = useThemeManager();
+    const {switchTheme} = useThemeManager();
 
-    function switchTheme() {
-        
-    }
+
     return (
         <header className={styles.header}>
             <h1 className={styles.heading}>Where in the world?</h1>
-            <div className={styles.modeContainer} onClick={() => {setTheme(theme == Themes.Dark ? Themes.Light : Themes.Dark)}}>
+            <div className={styles.modeContainer} onClick={() => {switchTheme()}}>
                 <IoMdMoon className={styles.icon}/>
                 <p>Dark mode</p>
             </div>

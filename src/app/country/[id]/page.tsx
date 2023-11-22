@@ -45,15 +45,17 @@ export default async function CountryPage({ params }: { params: { id: string } }
                     <div className={styles.infoContainer}>
                         <div className={styles.infoColumn}>
                             <p><b>Native Name:</b> {findFirstProperty(country.name.nativeName).official}</p>
-                            <p>Population: {country.population}</p>
-                            <p>Region: {country.region}</p>
-                            <p>Sub Region: {country.subregion}</p>
-                            <p>Capital: {country.capital}</p>
+                            <p><b>Population:</b> {country.population}</p>
+                            <p><b>Region:</b> {country.region}</p>
+                            <p><b>Sub Region:</b> {country.subregion}</p>
+                            <p><b>Capital:</b> {country.capital}</p>
                         </div>
                         <div className={styles.infoColumn}>
-                            <p>Top Level Domain: {country.tld}</p>
-                            <p>Currencies: {findFirstProperty(country.currencies).name}</p>
-                            <p>Languages: {getPropertyList(country.languages)}</p>
+                            <p><b>Top Level Domain:</b> {country.tld}</p>
+                            <p><b>Currencies:</b> {findFirstProperty(country.currencies).name}</p>
+                            <p><b>Languages:</b> {getPropertyList(country.languages).map((language) => {
+                                return <span key={`${language}`}> {language}</span>
+                            })}</p>
                         </div>
                     </div>
                     <div className={styles.borderCountriesContainer}>
