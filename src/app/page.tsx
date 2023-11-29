@@ -21,11 +21,11 @@ export default function Home() {
 
 	return (
 		<main className={styles.main}>
-			<section className={styles.controls}>
+			<div className={styles.controls}>
 				{countryList && <SearchForm setCurrentDisplayList={setCurrentDisplayList} countryList={countryList}/>}
 
 				<CountrySelect setCurrentDisplayList={setCurrentDisplayList} countryList={countryList} currentDisplayList={currentDisplayList}/>
-			</section>
+			</div>
 			{countryList && currentDisplayList && 
 				<CardDisplay
 					countryList={countryList} 

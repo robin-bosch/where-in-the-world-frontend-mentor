@@ -36,7 +36,8 @@ export default function SearchForm({setCurrentDisplayList, countryList}: any) {
             <AiOutlineSearch className={styles.searchIcon}/>
             <input 
                 type="text" 
-                placeholder="Search for a country" 
+                placeholder="Search for a country"
+				aria-label="Search input" 
                 onChange={(e) => setSearchValue(e.target.value)}
                 className={styles.searchInput}
             />

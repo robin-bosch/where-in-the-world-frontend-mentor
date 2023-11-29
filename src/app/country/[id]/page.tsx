@@ -65,7 +65,7 @@ export default async function CountryPage({ params }: { params: { id: string } }
                         <p className={styles.borderCountriesLabel}><b>Border Countries: </b></p>
                         <div className={styles.borderCountriesList}>
                             {country.borders.length > 0 ? country.borders.map((border: any) => {
-                                return <p key={border} className={styles.borderCountry}>{border}</p>
+                                return <Link href={toUrlConverter(border)} key={border} className={styles.borderCountry}>{border}</Link>
                             }) : <div>None</div>}
                         </div>
                         
