@@ -11,16 +11,16 @@
     background: var(--elements);
 }
 
-/* .icon {
-
-} */
-
 .heading {
-    font-size:clamp(1rem, 5vw, 2rem);
+    font-size:clamp(1rem, 3vw, 1.5rem);
 }
 
 .modeContainer {
     display: flex;
     gap:1rem;
     align-items: center;
+}
+
+.modeContainer:hover {
+    cursor: pointer;
 }

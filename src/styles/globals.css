@@ -1,9 +1,18 @@
 @import url("./reset.css");
 
 
-
+/*
+* All theme colours
+*/
 .dark-theme {
     --background: hsl(207, 26%, 17%);
+    --background-gradient: linear-gradient(
+        to bottom,
+        var(--background),
+        var(--background) 80%,
+        hsl(210, 26%, 17%) 80%,
+        hsl(210, 26%, 17%)
+      );
     --text: hsl(0, 0%, 100%);
     --elements: hsl(209, 23%, 22%);
     --input: var(--text);
@@ -20,10 +29,12 @@
     color: var(--text);
 }
 
-body {
 
+/*
+* Global css
+*/
+body {
     font-size:14px;
-    
     font-weight: 300;
 }
 

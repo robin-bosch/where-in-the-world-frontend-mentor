@@ -2,36 +2,37 @@
 import styles from "./SearchForm.module.css"
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useEffect, useState } from 'react';
-import useSWR from "swr";
 
 
-const fetcher = (url: any) => fetch(url).then(r => r.json())
+export default function SearchForm({setCurrentDisplayList, countryList}: any) {
+	const [searchValue, setSearchValue] = useState<string>("");
 
-export default function SearchForm({data, setCurrentCountryList}: any) {
-  const [searchValue, setSearchValue] = useState<string>("");
-
-
-      useEffect(() => {
+	//Delay the search by one second to make sure there are no unnecessary server requests
+	useEffect(() => {
         const debouncedSearch = setTimeout(search, 1000)
-        return () => {
-          clearTimeout(debouncedSearch); // Clear the timer when the component unmounts
-        };
+
+		return () => {
+			clearTimeout(debouncedSearch);
+		};
       }, [searchValue]);
 
+	
+	/**
+	 * Requesting a search on the server by given value if value is zero it resets to the currently cached countries
+	 */
 	function search() {
-    if(searchValue != "") {
-      fetch(`/api/queryCountries?query=${searchValue}`).then((res) => res.json()).then((data) => {
-        setCurrentCountryList(data);
-      })
-    }
-		
+		if(searchValue != "") {
+			fetch(`/api/queryCountries?query=${searchValue}`).then((res) => res.json()).then((data) => {
+				setCurrentDisplayList(data);
+			})
+		}
+		else {
+			setCurrentDisplayList(countryList);
+		}
 	}
 
-
-
-
     return (
-        <form className={styles.searchForm}>
+        <form className={styles.searchForm} onSubmit={(e) => {e.preventDefault()}}>
             <AiOutlineSearch className={styles.searchIcon}/>
             <input 
                 type="text" 

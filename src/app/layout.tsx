@@ -7,8 +7,11 @@ import { ThemeProvider } from '@/components/ThemeProvider/ThemeProvider'
 const nunito_sans = Nunito_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Where in the world?',
-  description: 'Where in the world?',
+    title: 'Where in the world?',
+    description: 'Where in the world?',
+    icons: {
+        icon: "/favicon-32x32.png",
+    },
 }
 
 export default function RootLayout({
@@ -21,10 +24,9 @@ export default function RootLayout({
 	<html lang="en">
     
 		<body className={`${nunito_sans.className}`}>
-    <ThemeProvider>
-      <Header/>
-			{children}
-      
+            <ThemeProvider>
+                <Header/>
+			    {children}
 			</ThemeProvider>
 		</body>
     

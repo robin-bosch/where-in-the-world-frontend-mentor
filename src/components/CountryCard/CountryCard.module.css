@@ -1,12 +1,12 @@
 
 .countryCard {
-    background: var(--elements);
+    height:100%;
     border-radius:5px;
 
     overflow: hidden;
-    height:100%;
-}
 
+    background: var(--elements);
+}
 
 .countryFlag {
     width:100%;
@@ -14,13 +14,12 @@
 }
 
 .informationContainer {
+    padding:2rem 2rem 3rem 2rem;
+
     display:flex;
     flex-direction: column;
     gap:0.5rem;
-    padding:2rem 2rem 3rem 2rem;
 }
-
-
 
 .heading {
     margin:0 0 0.5rem 0;
