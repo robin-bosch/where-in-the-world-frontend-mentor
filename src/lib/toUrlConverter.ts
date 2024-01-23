@@ -5,5 +5,5 @@
  * @returns - converted url
  */
 export default function toUrlConverter(name: string): string {
-    return name.toLowerCase().replaceAll(" ", "-");
+    return name.normalize('NFKD').replace(/[^\w\s-]/g, '').replace(/[\s]+/g, '-').toLowerCase();
 }
